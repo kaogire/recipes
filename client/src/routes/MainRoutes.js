@@ -11,7 +11,7 @@ import Products from "../pages/Products";
 import Recipe from "../pages/Recipe";
 import Tutorials from "../pages/Tutorials";
 import About from "../pages/About";
-import Register from "../pages/Register";
+import Signup from "../pages/Signup";
 import Login from "../pages/Login";
 import Error from "../pages/Error";
 import SingleRecipe from "../pages/SingleRecipe";
@@ -69,7 +69,7 @@ const MainRoutes = () => {
           />
           <Route path="tutorials" element={<Tutorials />} />
           <Route path="about" element={<About />} />
-          <Route path="register" element={<Register />} />
+          <Route path="signup" element={<Signup />} />
           <Route path="profile" element={<EditProfile />} />
           <Route path="login" element={<Login setUser={setUser} />} />
 

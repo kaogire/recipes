@@ -6,7 +6,7 @@ import { Nav, Navbar } from "react-bootstrap";
 // import logo from "../assets/Images/recipe-sharing-logo-new.png";
 
 // pages
-import Register from "../pages/Register";
+import Register from "../pages/Signup";
 import Login from "../pages/Login";
 import { toast } from "react-toastify";
 
