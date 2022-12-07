@@ -1,20 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const logoStyle = {
+const buttonPosition = {
   display: "flex",
-  justifyContent: "space-between",
-  alignItems: "center",
+  justifyContent: "flex-end",
 };
 
 const logo = {
-  fontSize: "80px",
+  fontSize: "70px",
   fontWeight: "bold",
-  fontFamily: "Tangerine",
+  fontFamily: "Satisfy, cursive",
   marginTop: "10px",
   marginBottom: "0px",
   marginLeft: "10px",
   paddingTop: "5px",
+  textAlign: "center",
 };
 
 const buttonStyle = {
@@ -27,13 +27,13 @@ const buttonStyle = {
   padding: "4px 20px",
   margin: "10px",
   borderRadius: "8px",
+alignContent: "right",
 };
 
 function Logo() {
   return (
-    <div style={logoStyle}>
-      <h1 style={logo}>Table for 2 Recipes</h1>
-      <div>
+    <div>
+      <div style={buttonPosition}>
         <button style={buttonStyle}>
           <Link to="/login">Login</Link>
         </button>
@@ -41,6 +41,7 @@ function Logo() {
           <Link to="/signup">Sign Up</Link>
         </button>
       </div>
+      <h1 style={logo}>Table for 2 Recipes</h1>
     </div>
   );
 }
