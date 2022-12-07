@@ -3,7 +3,6 @@ import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 import Search from "../components/Search";
 
-
 // our api
 const api = "http://localhost:5000/recipes";
 
@@ -11,12 +10,11 @@ const Recipe = () => {
   // recipe state
   const [recipe, setRecipe] = useState([]);
 
-
   // search filter state
   const [searchRecipeInput, setSearchRecipeInput] = useState("");
   const [filteredRecipe, setFilteredRecipe] = useState([]);
 
-  // function to truncate the words to the secified number
+  // function to truncate the words to the specified number
   const truncate = (str, no_of_words) => {
     return str.split(" ").splice(0, no_of_words).join(" ");
   };
@@ -54,7 +52,10 @@ const Recipe = () => {
                   <div className="">
                     <Card className="card_container">
                       <Link to={`/recipe/${id}`} className="recipe__link">
-                        <Card.Img variant="top" src={`https://recipes.eerieemu.com${image}`} />
+                        <Card.Img
+                          variant="top"
+                          src={`https://recipes.eerieemu.com${image}`}
+                        />
                         <Card.Body>
                           <Card.Title className="recipe__title">
                             {foodname}
@@ -81,7 +82,10 @@ const Recipe = () => {
                   <div className="">
                     <Card className="card_container">
                       <Link to={`/recipe/${id}`} className="recipe__link">
-                        <Card.Img variant="top" src={`https://recipes.eerieemu.com${image}`} />
+                        <Card.Img
+                          variant="top"
+                          src={`https://recipes.eerieemu.com${image}`}
+                        />
                         <Card.Body>
                           <Card.Title className="recipe__title">
                             {foodname}

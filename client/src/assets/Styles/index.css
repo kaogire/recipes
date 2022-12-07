@@ -15,7 +15,7 @@ font-family: 'Creepster', cursive;
   --primary-color: #2ccbd3;
   --bg-color: #f8f9fa;
   --bg-main-color: #fefefe;
-  --footer-color: #e9dcdc;
+  --footer-color: #eFFdF0;
 }
 
 .container__recipe {
@@ -244,56 +244,56 @@ font-family: 'Creepster', cursive;
   transform: rotate(20deg);
 } */
 
-.hero-image .image-sect {
+/* .hero-image .image-sect {
   position: relative;
   display: flex;
-}
+} */
 
-.image-sect.image {
+/* .image-sect.image {
   width: 600px;
-}
+} */
 
-.image-sect {
+/* .image-sect {
   background-color: #2ccbd3 !important;
   border-radius: 100% 0% 0% 100% / 36% 52% 48% 64%;
-}
+} */
 
-.image-sect img {
+/* .image-sect img {
   width: 75% !important;
   margin-top: 60px;
-}
+} */
 
-.hero-blob {
+/* .hero-blob {
   border-radius: 100% 0% 0% 100% / 36% 52% 48% 64%;
   width: 550px;
   position: absolute;
   top: 10;
-}
+} */
 
 /* /Hero */
 
 /* Middle */
-.middle {
+.preview {
   width: 100%;
-  height: 100vh;
+  height: 80vh;
   padding: 10px;
 }
 
-.middle h2 {
+.preview h2 {
   font-weight: bold;
   text-align: center;
   color: #2ccbd3;
   letter-spacing: 2px;
 }
 
-.middle-container {
+.preview-container {
   display: flex;
   height: 500px;
   margin: 50px auto;
   justify-content: space-between;
 }
 
-.middle-container .panel {
+.preview-container .panel {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -305,12 +305,12 @@ font-family: 'Creepster', cursive;
   border-radius: 3px;
 }
 
-.middle-container .panel h3 {
+.preview-container .panel h3 {
   color: #ffffff;
   text-transform: capitalize;
 }
 
-.middle-container .panel .heading {
+.preview-container .panel .heading {
   position: absolute;
   bottom: 20px;
   animation: fadeIn 5s;
@@ -326,7 +326,7 @@ font-family: 'Creepster', cursive;
   }
 }
 
-.panel .middle-desc {
+.panel .preview-desc {
   background-color: white;
   padding: 15px;
   max-height: 100%;
@@ -338,29 +338,30 @@ font-family: 'Creepster', cursive;
   transition: 0.2s ease-in;
 }
 
-.middle-container .panel:hover .middle-desc {
+.preview-container .panel:hover .preview-desc {
   transform: translateY(0);
 }
 
-.panel .middle-desc h3 {
+.panel .preview-desc h3 {
   text-align: center;
 }
 
 /* /Middle */
 
 /* End */
-.end {
+.middle {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
+  margin: 4em 0em;
 }
 
-.end-container {
+.middle-container {
   padding: 5px;
   font-family: "Montserrat", sans-serif;
 }
 
-.end-container h2 {
+.middle-container h2 {
   text-align: center;
   padding: 0 0 20px 0;
   color: #2ccbd3;
@@ -368,14 +369,14 @@ font-family: 'Creepster', cursive;
   font-family: "Fraunces", sans-serif;
 }
 
-.end-container .end-buttons {
+.middle-container .middle-buttons {
   padding: 5px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
 
-.end-buttons button {
+.middle-buttons button {
   width: 230px;
   padding: 20px 0;
   outline: none;
@@ -478,6 +479,11 @@ footer {
   align-items: center;
   justify-content: space-between;
   margin: 4rem 0 3rem 0;
+}
+
+.bottom__Footer h5 {
+  font-size: 14px;
+  font-weight: 400;
 }
 
 .bottom__Footer :nth-child(1) {

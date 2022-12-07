@@ -11,12 +11,12 @@ const Footer = () => {
           </div>
           <div className="col-lg-3">
             <div className="footer__Links">
-              <h2>Extras</h2>
+              <h2>Links</h2>
               <Link className="footer__Link" to="">
                 Our Products
               </Link>
               <Link className="footer__Link" to="">
-                News
+                About Us
               </Link>
               <Link className="footer__Link" to="">
                 Blog
@@ -29,17 +29,17 @@ const Footer = () => {
           <div className="col-lg-3">
             <div className="contact">
               <h2>Contacts</h2>
-              <p className="footer__Address">Address: 21070, 00100</p>
+              <p className="footer__Address">Address: 8567857, 4th Avenue</p>
               <p>
-                Phone: <a href="tel:+254799820376">+254799820376</a>
+                Phone: <a href="tel:+254799820376">+254715578901</a>
               </p>
               <p>
-                Gmail: <a href="mailto:Recipe@Gmail.Com">Recipe@Gmail.Com</a>
+                Gmail: <a href="mailto:Recipe@Gmail.Com">Tablefor2@gmail.com</a>
               </p>
             </div>
           </div>
           <div className="col-lg-4">
-            <h2>Subscription</h2>
+            <h2>Subscribe</h2>
             <div className="input__email mt-3">
               <span className="me-1">Email:</span>
               <input type="email" name="" id="" />
@@ -52,8 +52,11 @@ const Footer = () => {
       </footer>
 
       <div className="bottom__Footer">
-        <h5>Privacy Policy</h5>
-        <h5>CopyRight &#64; 2022</h5>
+        <h5>© 2022 Copyright. All rights reserved.Use of and/or
+          registration on any portion of this site constitutes acceptance of our
+          User Agreement and Privacy Policy and Cookie
+          Statement .
+        </h5>
       </div>
     </div>
   );
