@@ -1,7 +1,7 @@
 import React from "react";
 
 function Preview() {
-  const WeeklyRecipes = [
+  const PopularRecipes = [
     {
       id: 1,
       title: "Chicken salad",
@@ -32,7 +32,7 @@ function Preview() {
     <div className="preview">
       <h2>Popular Recipes</h2>
       <div className="preview-container">
-        {WeeklyRecipes.map(({ id, title, content, imageUrl }) => (
+        {PopularRecipes.map(({ id, title, content, imageUrl }) => (
           <div
             className="panel"
             style={{
