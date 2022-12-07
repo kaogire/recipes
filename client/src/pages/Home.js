@@ -1,12 +1,12 @@
 import React from "react";
-import Hero from "../components/Hero";
-import Middle from "../components/Middle";
+import Header from "../components/Header";
+// import Preview from "../components/Preview";
 import End from "../components/End"
 
 const Home = () => {
   return <div>
-    <Hero/>
-    <Middle/>
+    <Header/>
+    {/* <Preview/> */}
     <End/>
   </div>;
 };

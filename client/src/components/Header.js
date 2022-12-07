@@ -1,20 +1,16 @@
 
 import React from "react"
 import { Link } from 'react-router-dom'
-import pan from "../assets/Images/pan-spray.png"
+// import spices3 from "../images/spices3.jpg"
 
 
-function Hero({ handleAddRecipeShow }) {
+
+function Header({ handleAddRecipeShow }) {
   return (
-    <div className="hero">
-      <div className="hero-text">
+    <div className="header">
+      <div className="header-text">
         <div className="text">
-          <h1>Cooks'</h1>
-          <h1>Creations</h1>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.{" "}
-          </p>
+          <h1>The Finest Flavours Explored</h1>
           <div className="buttons">
             <button className="btn-get">Get recipe</button>
             <Link to="addrecipe">
@@ -25,16 +21,16 @@ function Hero({ handleAddRecipeShow }) {
           </div>
         </div>
       </div>
-      <div className="hero-image">
+      {/* <div className="hero-image">
         <div className="image-sect">
           <div className="hero-blob"></div>
           <div className="image-sect image">
-            <img src={pan} alt="pan-spray" />
+            <img src={spices3} alt="pan-spray" />
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
 
-export default Hero
+export default Header;

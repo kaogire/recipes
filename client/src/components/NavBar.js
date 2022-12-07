@@ -3,12 +3,16 @@ import { NavLink, Link,useNavigate } from "react-router-dom";
 import { Nav, Navbar } from "react-bootstrap";
 
 // images
-import logo from "../assets/Images/recipe-sharing-logo-new.png";
+// import logo from "../assets/Images/recipe-sharing-logo-new.png";
 
 // pages
 import Register from "../pages/Register";
 import Login from "../pages/Login";
 import { toast } from "react-toastify";
+
+const navLogo = {
+  "text-decoration": "none",
+};
 
 const NavBar = () => {
   // modal states
@@ -56,9 +60,11 @@ const NavBar = () => {
         variant="light"
         className="my-2 d-flex"
       >
-        <Link to="/" title="Welcome Recipe Sharing App">
+        <Link to="/" title="Welcome to Table for 2 Recipes" style={navLogo}>
           <div className="logo">
-            <img src={logo} alt="recipe sharing logo" />
+            <h1> Table for 2 <br/> 
+            Recipes
+            </h1>
           </div>
         </Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -77,7 +83,7 @@ const NavBar = () => {
                   onClick={handleShow}
                 >
                   <span className="link__titleRegister d-flex align-items-center justify-content-center">
-                    Register
+                    Sign Up
                   </span>
                 </Link>
               </>

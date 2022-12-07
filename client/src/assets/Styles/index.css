@@ -12,7 +12,7 @@ font-family: 'Creepster', cursive;
 */
 
 :root {
-  --primary-color: #2CCBD3;
+  --primary-color: #2ccbd3;
   --bg-color: #f8f9fa;
   --bg-main-color: #fefefe;
   --footer-color: #e9dcdc;
@@ -24,7 +24,7 @@ font-family: 'Creepster', cursive;
 }
 
 * {
-  font-family: "Poppins", sans-serif;
+  font-family: "Lato", sans-serif;
 }
 
 .profile__edit {
@@ -53,12 +53,12 @@ font-family: 'Creepster', cursive;
 }
 
 .profile__edit:hover {
-  color: #2CCBD3;
+  color: #2ccbd3;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
 .profile__edit__dash:hover {
-  color: #2CCBD3;
+  color: #2ccbd3;
 }
 
 .pre {
@@ -113,7 +113,19 @@ font-family: 'Creepster', cursive;
 .logo {
   border-radius: 10px;
   padding: 5px;
-  background: #ec56001e;
+  text-decoration: none;
+}
+
+.a:link {
+  text-decoration: none;
+}
+
+.navbar h1 {
+  text-decoration: none;
+  color: black;
+  font-family: "Satisfy", cursive;
+  font-size: 4em;
+  font-weight: 600;
 }
 
 .active {
@@ -165,67 +177,72 @@ font-family: 'Creepster', cursive;
 
 /* /Navbar */
 
-/* Hero */
-.hero {
+/* Header */
+.header {
   display: flex;
-  justify-content: center;
-  margin-bottom: 100px;
+  justify-content: right;
+  padding: 6em 0em 6em 5em;
+  background-image: url(./spices1.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-.hero-text {
-  width: 40%;
+.header-text {
+  width: 60%;
   height: 100%;
   padding: 10px 0px 10px 10px;
 }
 
-.hero-text .text {
+.header-text .text {
   padding: 10px 0px 10px 20px;
 }
 
-.hero-text .text h1 {
+.header-text .text h1 {
   text-align: center;
-  font-size: 4rem;
+  font-size: 3rem;
   transition: 1s ease-in-out;
   letter-spacing: 2px;
-  color: #2CCBD3;
+  color: #2ccbd3;
+  font-family: "Montserrat", sans-serif;
   font-weight: bold;
 }
 
-.hero-text .text .buttons {
+.header-text .text .buttons {
   text-align: center;
 }
 
-.hero-text .text .buttons button {
+.header-text .text .buttons button {
   margin-left: 10px;
   cursor: pointer;
   padding: 15px;
   border-radius: 5px;
   outline: none;
   border: none;
-  background-color: #2CCBD3;
+  background-color: #2ccbd3;
   color: #ffffff;
 }
 
-.hero-image {
+/* .hero-image {
   background-color: #2CCBD3;
   border-radius: 100% 0% 0% 100% / 36% 52% 48% 64%;
-}
+} */
 
-.hero-image img {
+/* .hero-image img {
   transform: rotate(309deg);
   object-fit: cover;
   position: absolute;
   width: 100%;
-}
+} */
 
-.hero-image img.absol {
+/* .hero-image img.absol {
   width: 200px;
   height: 200px;
   position: absolute;
   top: 140px;
   right: 120px;
   transform: rotate(20deg);
-}
+} */
 
 .hero-image .image-sect {
   position: relative;
@@ -237,7 +254,7 @@ font-family: 'Creepster', cursive;
 }
 
 .image-sect {
-  background-color: #2CCBD3 !important;
+  background-color: #2ccbd3 !important;
   border-radius: 100% 0% 0% 100% / 36% 52% 48% 64%;
 }
 
@@ -265,7 +282,7 @@ font-family: 'Creepster', cursive;
 .middle h2 {
   font-weight: bold;
   text-align: center;
-  color: #2CCBD3;
+  color: #2ccbd3;
   letter-spacing: 2px;
 }
 
@@ -346,7 +363,7 @@ font-family: 'Creepster', cursive;
 .end-container h2 {
   text-align: center;
   padding: 0 0 20px 0;
-  color: #2CCBD3;
+  color: #2ccbd3;
   font-weight: bold;
   font-family: "Fraunces", sans-serif;
 }
@@ -363,7 +380,7 @@ font-family: 'Creepster', cursive;
   padding: 20px 0;
   outline: none;
   border: none;
-  background-color: #2CCBD3;
+  background-color: #2ccbd3;
   color: #ffffff;
   font-weight: bold;
   border-radius: 5px;
@@ -476,7 +493,7 @@ footer {
 /* Register Modal */
 .form_error {
   font-size: 14px;
-  color: #2CCBD3;
+  color: #2ccbd3;
 }
 
 .modal-footer {

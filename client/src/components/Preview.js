@@ -1,6 +1,6 @@
 import React from "react";
 
-function Middle() {
+function Preview() {
   const WeeklyRecipes = [
     {
       id: 1,
@@ -52,4 +52,4 @@ function Middle() {
   );
 }
 
-export default Middle;
+export default Preview;
