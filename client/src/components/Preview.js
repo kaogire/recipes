@@ -4,34 +4,34 @@ function Preview() {
   const WeeklyRecipes = [
     {
       id: 1,
-      title: "Chicken biryani",
+      title: "Chicken salad",
       content:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullamsodales, sem a pretium ullamcorper, lorem lectus auctor ligula,semper mattis velit purus vel urna. Duis porta felis ac semposuere convallis.",
       imageUrl:
-        "https://images.pexels.com/photos/7353380/pexels-photo-7353380.jpeg?auto=compress&cs=tinysrgb&w=400",
+        "https://images.unsplash.com/photo-1574926054530-540288c8e678?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
     },
     {
       id: 2,
-      title: "Chicken biryani",
+      title: "Roast chicken",
       content:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullamsodales, sem a pretium ullamcorper, lorem lectus auctor ligula,semper mattis velit purus vel urna. Duis porta felis ac semposuere convallis.",
       imageUrl:
-        "https://images.pexels.com/photos/7353380/pexels-photo-7353380.jpeg?auto=compress&cs=tinysrgb&w=400",
+        "https://images.unsplash.com/photo-1564436872-f6d81182df12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8bWVhbHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
     },
     {
       id: 3,
-      title: "Chicken biryani",
+      title: "Fish ",
       content:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullamsodales, sem a pretium ullamcorper, lorem lectus auctor ligula,semper mattis velit purus vel urna. Duis porta felis ac semposuere convallis.",
       imageUrl:
-        "https://images.pexels.com/photos/7353380/pexels-photo-7353380.jpeg?auto=compress&cs=tinysrgb&w=400",
+        "https://images.unsplash.com/photo-1611599537845-1c7aca0091c0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
     },
   ];
 
   return (
-    <div className="middle">
-      <h2>Weekly Recipes</h2>
-      <div className="middle-container">
+    <div className="preview">
+      <h2>Popular Recipes</h2>
+      <div className="preview-container">
         {WeeklyRecipes.map(({ id, title, content, imageUrl }) => (
           <div
             className="panel"
@@ -41,7 +41,7 @@ function Preview() {
             key={id}
           >
             <h3 className="heading">{title}</h3>
-            <div className="middle-desc">
+            <div className="preview-desc">
               <h3>{title}</h3>
               <p>{content}</p>
             </div>
