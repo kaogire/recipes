@@ -1,4 +1,5 @@
 require 'rest-client'
+require 'faker'
 
 puts "Seeding."
 
