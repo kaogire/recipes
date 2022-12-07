@@ -8,7 +8,6 @@ const navLinks = {
   width: "14%",
   borderRadius: "5px",
   border: "1px solid white",
-  color: "white",
   backgroundColor: "transparent",
   fontSize: "20px",
   fontWeight: "bold",
@@ -17,6 +16,7 @@ const navLinks = {
   active: {
     backgroundColor: "rgba(94, 151, 255, 0.4)",
   },
+  padding: "10px 10px",
 };
 
 const navbar = {
@@ -38,18 +38,16 @@ function Navbar() {
         <NavLink to="/" style={navLinks}>
           Home
         </NavLink>
-        <NavLink to="/breakfast" style={navLinks}>
-          Breakfast
+        <NavLink to="/recipes" style={navLinks}>
+          Recipes
         </NavLink>
-        <NavLink to="/lunch" style={navLinks}>
-          Lunch
+        <NavLink to="/holiday_menus" style={navLinks}>
+          Holiday Menus
         </NavLink>
-        <NavLink to="/dinner" style={navLinks}>
-          Dinner
+        <NavLink to="/articles" style={navLinks}>
+          Articles
         </NavLink>
-        <NavLink to="/desert" style={navLinks}>
-          Desert
-        </NavLink>
+
       </nav>
       <div style={space}></div>
     </div>

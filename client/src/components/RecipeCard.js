@@ -23,17 +23,17 @@ function RecipeCard({ recipe }) {
 
   const handleClick = () => {
     history.push({
-      pathname: `/${film.id}`,
+    //   pathname: `/${film.id}`,
     });
   };
 
   return (
     <div style={details} onClick={handleClick}>
-      <img style={images} src={recipe.i.imageUrl} alt={recipe.l} />
+      {/* <img style={images} src={recipe.i.imageUrl} alt={recipe.l} />
       <h2 style={text}>{film.l} </h2>
       <p style={text}>Category:{film.qid} </p>
       <p style={text}>Genre:{film.genre} </p>
-      <p style={text}>Rank on IMDB:{film.rank} </p>
+      <p style={text}>Rank on IMDB:{film.rank} </p> */}
     </div>
   );
 }
