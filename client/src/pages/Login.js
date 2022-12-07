@@ -55,7 +55,7 @@ const Login = ({
   return (
     <>
       <Modal
-        size="lg"
+        // size="lg"
         show={showLogin}
         onHide={handleLoginClose}
         backdrop="static"
