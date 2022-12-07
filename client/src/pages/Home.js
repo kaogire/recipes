@@ -1,16 +1,14 @@
 import React from "react";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import Hero from "../components/Hero";
+import Middle from "../components/Middle";
+import End from "../components/End"
 
-function Home ()
-{
-  return (
-    <div>
-      <Header />
-      <Footer />
-    </div>
-  );
-}
+const Home = () => {
+  return <div>
+    <Hero/>
+    <Middle/>
+    <End/>
+  </div>;
+};
 
 export default Home;
-
