@@ -1,12 +1,41 @@
-# Project Template: React/Rails API
+# recipe App
 
-## Description
+# Authors
+This project was contributed to by:
 
-This project is scaffolded so that you can build a React frontend and Rails
-backend together, and easily deploy them to Render.
+* Jackline Kariuki - Front End Developer
+* Alex Wachira Kimotho - Back End Developer
+* Shaniz Roseline - Front End Developer
+* Benard Cheruiyot - Back End Developer
 
-**Note**: if you are not planning to deploy your app to Render and prefer to use
-SQLite, you will need to make the following changes in the project files:
+# Description
+Recipe app allows users to view, add, delete, edit and add views on recipes, be it their own or those created by other users. Users can also view other users' recipes and comment on them.
+
+## Setup/Installation Requirements
+# backend
+Fork/Clone this repository to your local machine.(https://github.com/benardcheruiyot/recipe.git)
+& cd into the project folder
+& Run bundle install to install all dependencies
+& Run rails server to run the database on localhost
+& preferably use nvm v16
+# Frontend
+& cd into client folder
+&run yarn install
+&run yarn start
+
+## Technologies Used
+* HTML
+* CSS
+* JavaScript
+* React
+* Redux
+* Ruby on Rails(API)
+* PostgreSQL
+* Heroku
+* Postman
+
+## License
+MIT License
 
 1. In the `Gemfile`, replace `gem 'pg', '~> 1.1'` with `gem 'sqlite3', '~>
    1.4'`.
