@@ -18,7 +18,7 @@ Creators and Collaborators
 
 ##Description
 
-ReCipe is an app that allows users to view, add, delete, update and comment on recipes, be it their own or those created by other users. Users can also view other users' recipes and comment on them. Users also have the ability to share their favortie recipes with other users via social media platforms.
+Table for 2 Recipes is an app that allows the user to view, create, modify and delete the recipes and/or comments.
 
 
 ---
