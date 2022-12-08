@@ -15,7 +15,7 @@ font-family: 'Creepster', cursive;
   --primary-color: #2ccbd3;
   --bg-color: #f8f9fa;
   --bg-main-color: #fefefe;
-  --footer-color: #eFFdF0;
+  --footer-color: #effdf0;
 }
 
 .container__recipe {
@@ -532,7 +532,7 @@ input[type="text"],
 input[type="password"] {
   width: 90%;
   border: none;
-  background-color: #eFFdF0;
+  background-color: #effdf0;
   padding: 10px;
   border-radius: 10px;
   font-size: 18px;
@@ -1322,23 +1322,66 @@ input[type="search"]::-webkit-search-results-decoration {
   border-radius: 5px;
 }
 /* EditProfile */
+
 /* Add Recipe Styles */
 
 .AddRecipe {
-  background-color: #ec5800;
+  background-color: #effdf0;
+  color: #000000;
   position: relative;
-  padding: 30px;
-  font-size: 16px;
-  font-style: "Roboto";
+  padding: 5em 0;
+  font-size: 20px;
+  font-style: "Lato";
 }
 
 .AddRecipe form {
   /* background-color: grey; */
-  padding: 50px;
+  padding: 60px;
+  font-style: "Lato";
+}
+
+.AddRecipe form label {
+  color: #000000;
+  font-size: 1em;
+  font-weight: 600;
+  margin-top: 1em;
+}
+
+.AddRecipe button {
+  width: auto;
+  /* display: flex;
+  justify-content: flex-end; */
+  background-color: var(--primary-color);
+  border: none;
+  padding: 10px 27px ;
+  margin-left: 94%;
+  border-radius: 0.6rem;
+  font-size: 0.8em;
+}
+
+.AddRecipe form ::placeholder {
+  color: lightgray;
+  font-size: 1em;
+  font-weight: 600;
+  margin-top: 1em;
 }
 
 .AddRecipe form input {
   height: 30px;
+  border: 0.5px solid darkgray;
+  background-color: #ffffff;
+  margin-bottom: 0.5em;
+  padding: 0.5em;
+  width: 90%;
+}
+
+.AddRecipe form textarea {
+  height: 100px;
+  border: 0.5px solid darkgray;
+  background-color: #ffffff;
+  margin-bottom: 0.5em;
+  padding: 0.5em;
+  width: 90%;
 }
 
 .Des {
@@ -1363,7 +1406,7 @@ textarea {
 .short {
   display: grid;
   width: 100%;
-  margin-top: -10px;
+  /* margin-top: -10px; */
 }
 
 .short input {
