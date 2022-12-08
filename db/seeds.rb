@@ -1,22 +1,15 @@
-require 'rest-client'
+# This file should contain all the record creation needed to seed the database with its default values.
+# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
+#
+# Examples:
+#
+#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+#   Character.create(name: 'Luke', movie: movies.first)
+
 require 'faker'
+require 'rest-client'
 
 puts "Seeding."
-
-# 50.times do
-#     User.create(
-#         firstname: Faker::Name.first_name,
-#         lastname: Faker::Name.last_name,
-#         username: Faker::Internet.username,
-#         email: Faker::Internet.email,
-#         password: "password",
-#         password_confirmation: "password"
-#     )
-# end
-
-# puts "Seeding done."
-
-# seeding recipes
 
 puts 'Now 🌱  seeding recipes...'
 
@@ -38,7 +31,10 @@ recipes.map do |recipe|
     )
 end
 
+user2 = User.create(firstname: "Jane", lastname: "Doe", username: "janedoe", email: "janedoe@gmail.com" , password_digest: "")
+user1 = User.create(firstname: "John", lastname: "Doe", username: "johndoe", email: "johndoe@gmail.com" , password_digest: "")
+
+comment1 = Comment.create(content: "This is a comment", user_id: user1.id, recipe_id: Recipe.first.id, image_url: "")
+comment2 = Comment.create(content: "This is another comment", user_id: user2.id, recipe_id: Recipe.first.id, image_url: "")
+
 puts "✅ Done seeding!"
-
-
-

@@ -1,10 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 import Search from "../components/Search";
 
 // our api
-const api = "http://localhost:5000/recipes";
+const api = "http://localhost:3000/recipes";
+
+// useEffect(() => {
+//   fetch (api), 
+//   { method: "GET" }
+//   .then((r) => {
+//     if (r.ok) {
+//       r.json().then((recipe) => setRecipe(recipe));
+//     }
+//   });
+// }, []);
+
+
+
+
 
 const Recipe = () => {
   // recipe state
@@ -13,6 +27,13 @@ const Recipe = () => {
   // search filter state
   const [searchRecipeInput, setSearchRecipeInput] = useState("");
   const [filteredRecipe, setFilteredRecipe] = useState([]);
+
+    useEffect(() => {
+      fetch(api)
+        .then((response) => response.json())
+        // 4. Setting *dogImage* to the image url that we received from the response above
+        .then((data) => console.log(data));
+    }, []);
 
   // function to truncate the words to the specified number
   const truncate = (str, no_of_words) => {

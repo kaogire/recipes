@@ -29,12 +29,12 @@ const NavBar = () => {
   const handleLoginShow = () => setShowLogin(true);
 
   // navLinks
-  const links = [
-    { id: 1, link: "Recipe", resourceLink: "/recipe" },
-    { id: 2, link: "Products", resourceLink: "/products" },
-    { id: 3, link: "Tutorials", resourceLink: "/tutorials" },
-    { id: 4, link: "About Us", resourceLink: "/about" },
-  ];
+  // const links = [
+  //   { id: 1, link: "Recipes", resourceLink: "/recipes" },
+  //   { id: 2, link: "Products", resourceLink: "/products" },
+  //   { id: 3, link: "Tutorials", resourceLink: "/tutorials" },
+  //   { id: 4, link: "About Us", resourceLink: "/about" },
+  // ];
 
    const navigate = useNavigate();
 
@@ -71,11 +71,25 @@ const NavBar = () => {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto"></Nav>
           <Nav className="nav__link">
-            {links.map(({ id, link, resourceLink }) => (
+              <NavLink className="nav__link" to="/recipes" >
+                <span className="link__title">Recipes</span>
+              </NavLink>
+              <NavLink className="nav__link" to="/products">
+                <span className="link__title">Products</span>
+              </NavLink>
+              <NavLink className="nav__link" to="/tutorials">
+                <span className="link__title">Tutorials</span>
+              </NavLink>
+              <NavLink className="nav__link" to="/about">
+                <span className="link__title">About Us</span>
+              </NavLink>
+
+
+            {/* {links.map(({ id, link, resourceLink }) => (
               <NavLink className="nav__link" to={resourceLink} key={id}>
                 <span className="link__title">{link}</span>
               </NavLink>
-            ))}
+            ))} */}
             {register ? (
               <>
                 <Link
