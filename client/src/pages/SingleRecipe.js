@@ -22,9 +22,10 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
 // our api
-const api = "http://localhost:3000/recipes";
+// const api = "http://localhost:3000/recipes";
 
 // initial data state
+
 const initialState = {
   foodname: "",
   description: "",
@@ -54,7 +55,7 @@ const SingleRecipe = ({ recipe, loadRecipes }) => {
 
   // destructuring
   const {
-    id,
+    id ,
     ingredients,
     foodname,
     image,
@@ -65,14 +66,15 @@ const SingleRecipe = ({ recipe, loadRecipes }) => {
     description,
   } = selectedRecipe;
 
+
   // link to the specific url
-  const shareUrl = `http://localhost:3000/recipe/${id}`;
+  const shareUrl = `http://localhost:3000/recipes/${id}`;
 
   const handleDelete = async (id) => {
     if (window.confirm(`Are you sure want to delete "${foodname}"`)) {
       axios.delete(`${"/recipes"}/${id}`);
       toast.success("Deleted Successfully");
-      navigate("/recipe");
+      navigate("/recipes");
       setTimeout(() => loadRecipes(), 500);
     } else {
       toast.error("Be keen on what you want to delete");
@@ -81,19 +83,29 @@ const SingleRecipe = ({ recipe, loadRecipes }) => {
 
   const handleRecipeUpdate = () => {
     toast.success("Updated Successfully");
-    navigate("/recipe");
+    console.log("Updated")
+    navigate("/recipes");
+    // window.location.reload();
   };
 
   const handleUpdate = () => {};
 
-  const handleChange = (e) => {
-    let { name, value } = e.target;
+  // const handleChange = (e) => {
+  //   let { name, value } = e.target;
 
+  //   setInputs({
+  //     ...inputs,
+  //     [name]: value,
+  //   });
+  // };
+
+  const handleChange = (e) => {
+    console.log (e.target.name, e.target.value)
     setInputs({
       ...inputs,
-      [name]: value,
+      [e.target.name]: e.target.value,
     });
-  };
+  }
 
   return (
     <div className="single__container">
@@ -101,9 +113,7 @@ const SingleRecipe = ({ recipe, loadRecipes }) => {
         <div
           className="left recipe__bg"
           style={{
-            backgroundImage: `url(https://recipes.eerieemu.com
-            ${image}
-          )`,
+            backgroundImage: `url(${image})`,
             height: "auto",
           }}
         >
@@ -247,8 +257,8 @@ const SingleRecipe = ({ recipe, loadRecipes }) => {
                     type="text"
                     name="foodname"
                     placeholder="name:"
+                    onChange= {handleChange}
                     value={foodname}
-                    onChange={handleChange}
                   />
                   <br />
 
