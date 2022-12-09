@@ -638,8 +638,22 @@ div.col-lg-1,
 }
 
 .card_container {
-  min-height: 70vh !important;
+  min-height: 60vh !important;
+  margin: 1.2em;
+    background-color: #baecee !important;
+
 }
+
+
+.card_details{
+  background-color: rgba(94, 151, 255, 0.4);
+  width: 16.8vw;
+  height: auto;
+};
+
+.card_text{
+  padding: "0em 1em";
+};
 
 .recipe__title {
   text-align: center;
@@ -647,13 +661,24 @@ div.col-lg-1,
 
 .recipe__description {
   text-align: justify;
-  letter-spacing: 1.4px;
+  /* letter-spacing: 1.4px; */
 }
 
 .recipe__link {
   text-decoration: none;
   color: #000000;
 }
+
+.recipe__link img{
+  width: 100%;
+  height: 15em;
+}
+
+.recipe__link {
+  width: 100%;
+  height: 10em;
+}
+
 
 .recipe__link:hover {
   color: #000000;
