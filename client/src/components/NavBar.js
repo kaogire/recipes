@@ -2,16 +2,13 @@ import React, { useState } from "react";
 import { NavLink, Link,useNavigate } from "react-router-dom";
 import { Nav, Navbar } from "react-bootstrap";
 
-// images
-// import logo from "../assets/Images/recipe-sharing-logo-new.png";
-
 // pages
 import Register from "../pages/Signup";
 import Login from "../pages/Login";
 import { toast } from "react-toastify";
 
 const navLogo = {
-  "text-decoration": "none",
+  "textDecoration": "none",
 };
 
 const NavBar = () => {
@@ -28,15 +25,8 @@ const NavBar = () => {
   const handleLoginClose = () => setShowLogin(false);
   const handleLoginShow = () => setShowLogin(true);
 
-  // navLinks
-  // const links = [
-  //   { id: 1, link: "Recipes", resourceLink: "/recipes" },
-  //   { id: 2, link: "Products", resourceLink: "/products" },
-  //   { id: 3, link: "Tutorials", resourceLink: "/tutorials" },
-  //   { id: 4, link: "About Us", resourceLink: "/about" },
-  // ];
 
-   const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     setRegister(false);
@@ -85,11 +75,6 @@ const NavBar = () => {
               </NavLink>
 
 
-            {/* {links.map(({ id, link, resourceLink }) => (
-              <NavLink className="nav__link" to={resourceLink} key={id}>
-                <span className="link__title">{link}</span>
-              </NavLink>
-            ))} */}
             {register ? (
               <>
                 <Link
