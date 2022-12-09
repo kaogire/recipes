@@ -65,12 +65,12 @@ const SingleRecipe = ({ recipe, loadRecipes }) => {
     description,
   } = selectedRecipe;
 
-  // link to the spoaecific url
+  // link to the specific url
   const shareUrl = `http://localhost:3000/recipe/${id}`;
 
   const handleDelete = async (id) => {
     if (window.confirm(`Are you sure want to delete "${foodname}"`)) {
-      axios.delete(`${api}/${id}`);
+      axios.delete(`${"/recipes"}/${id}`);
       toast.success("Deleted Successfully");
       navigate("/recipe");
       setTimeout(() => loadRecipes(), 500);
@@ -107,12 +107,12 @@ const SingleRecipe = ({ recipe, loadRecipes }) => {
             height: "auto",
           }}
         >
-          <Link to="/recipe">
+          {/* <Link to="/recipe">
             <FontAwesomeIcon
               icon={faArrowLeft}
               style={{ color: "#ffffff", cursor: "pointer", fontSize: "40px" }}
             />
-          </Link>
+          </Link> */}
           <div className="left-socials">
             <div className="left-line"></div>
             <FacebookShareButton
@@ -176,7 +176,10 @@ const SingleRecipe = ({ recipe, loadRecipes }) => {
                   className={bookmark ? "bookmark" : ""}
                   onClick={() => setBookmark(true)}
                 >
-                  <FontAwesomeIcon icon={faBookmark} />
+                  <FontAwesomeIcon
+                    icon={faBookmark}
+                    style={{ marginLeft: "20", paddingTop: "0" }}
+                  />
                 </span>
                 <span
                   className={like ? "like" : ""}
@@ -184,7 +187,7 @@ const SingleRecipe = ({ recipe, loadRecipes }) => {
                 >
                   <FontAwesomeIcon
                     icon={faHeart}
-                    style={{ marginLeft: "20" }}
+                    style={{ marginLeft: "20", paddingTop: "0" }}
                   />
                 </span>
               </div>

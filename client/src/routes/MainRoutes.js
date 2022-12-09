@@ -8,7 +8,7 @@ import MainLayout from "../layouts/Main/Index";
 // pages
 import Home from "../pages/Home";
 import Products from "../pages/Products";
-import Recipe from "../pages/Recipe";
+import Recipe from "../pages/Recipes";
 import Tutorials from "../pages/Tutorials";
 import About from "../pages/About";
 import Signup from "../pages/Signup";
@@ -25,12 +25,12 @@ import EditProfile from "../pages/EditProfile";
 import ProtectedRoute from "./ProtectedRoute";
 
 // our api
-const api = "http://localhost:3000/recipes";
+// const api = "http://127.0.0.1:3000/recipes";
 
-const api2 = "http://127.0.0.1:3000/user";
+// const api2 = "http://127.0.0.1:3000/user";
 
 const MainRoutes = () => {
-  const [recipe, setRecipe] = useState([]);
+  const [recipes, setRecipes] = useState([]);
   const [user, setUser] = useState(null);
 
   // call loadRecipes function
@@ -40,21 +40,21 @@ const MainRoutes = () => {
 
   // fetch recipes from api
   const loadRecipes = async () => {
-    const response = await axios.get(api);
+    const response = await axios.get("/recipes");
+    setRecipes(response.data);
 
-    setRecipe(response.data);
   };
 
   useEffect(() => {
-    fetch(api2).then((r) => {
+    fetch("/user").then((r) => {
       if (r.ok) {
         r.json().then((user) => setUser(user));
       }
     });
-    console.log(user);
-  }, [user]);
+    // console.log(user);
+  }, []);
 
-  console.log("i am a ", user);
+
 
   return (
     <BrowserRouter>
@@ -62,10 +62,10 @@ const MainRoutes = () => {
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Home />} />
           <Route path="products" element={<Products />} />
-          <Route path="recipe" element={<Recipe recipe={recipe} />} />
+          <Route path="recipes" element={<Recipe recipes={recipes} />} />
           <Route
-            path="recipe/:recipeId"
-            element={<SingleRecipe loadRecipes={loadRecipes} recipe={recipe} />}
+            path="recipes/:recipeId"
+            element={<SingleRecipe loadRecipes={loadRecipes} recipe={recipes} />}
           />
           <Route path="tutorials" element={<Tutorials />} />
           <Route path="about" element={<About />} />
@@ -85,7 +85,7 @@ const MainRoutes = () => {
             path="addrecipe"
             element={<AddRecipe loadRecipes={loadRecipes} />}
           />
-          <Route path="procedure" element={<Procedure recipe={recipe} />} />
+          <Route path="procedure" element={<Procedure recipe={recipes} />} />
           <Route path="*" element={<Error />} />
         </Route>
       </Routes>

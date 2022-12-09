@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 import Search from "../components/Search";
 
 // our api
-const api = "http://localhost:3000/recipes";
+// const api = "http://localhost:3000/recipes";
 
 // useEffect(() => {
 //   fetch (api), 
@@ -20,20 +20,14 @@ const api = "http://localhost:3000/recipes";
 
 
 
-const Recipe = () => {
+const Recipe = ({recipes}) => {
+
   // recipe state
-  const [recipe, setRecipe] = useState([]);
+  // const [recipes, setRecipes] = useState([]);
 
   // search filter state
   const [searchRecipeInput, setSearchRecipeInput] = useState("");
   const [filteredRecipe, setFilteredRecipe] = useState([]);
-
-    useEffect(() => {
-      fetch(api)
-        .then((response) => response.json())
-        // 4. Setting *dogImage* to the image url that we received from the response above
-        .then((data) => console.log(data));
-    }, []);
 
   // function to truncate the words to the specified number
   const truncate = (str, no_of_words) => {
@@ -44,7 +38,7 @@ const Recipe = () => {
   const searchItems = (searchValue) => {
     setSearchRecipeInput(searchValue);
     if (searchRecipeInput !== "") {
-      const filteredRecipeData = recipe.filter((item) => {
+      const filteredRecipeData = recipes.filter((item) => {
         return Object.values(item)
           .join("")
           .toLowerCase()
@@ -52,7 +46,7 @@ const Recipe = () => {
       });
       setFilteredRecipe(filteredRecipeData);
     } else {
-      setFilteredRecipe(recipe);
+      setFilteredRecipe(recipes);
     }
   };
 
@@ -74,7 +68,8 @@ const Recipe = () => {
                     <Card className="card_container">
                       <Link to={`/recipe/${id}`} className="recipe__link">
                         <Card.Img
-                          variant="top"
+                        className="card__image"
+                          // variant="bottom"
                           src={`https://recipes.eerieemu.com${image}`}
                         />
                         <Card.Body>
@@ -90,19 +85,27 @@ const Recipe = () => {
                           <Link to={`/recipe/${id}`} className="see__more">
                             See more 👀
                           </Link>
-                        </Card.Body>
+                        </Card.Body> 
+
+                        <img className="card__image"
+                          src="https://recipes.eerieemu.com${image}"
+                          alt="photo"
+                        />
+                        <h3 >{foodname}</h3>
+                        <h2>hello</h2>
+                        <p>{truncate(description, 30)}...</p> */}
                       </Link>
                     </Card>
                   </div>
                 </div>
               </>
             ))
-          : recipe.map(({ id, foodname, description, image }) => (
+          : recipes.map(({ id, foodname, description, image }) => (
               <>
                 <div className="col-sm-6 col-md-4 col-lg-3" key={id}>
                   <div className="">
                     <Card className="card_container">
-                      <Link to={`/recipe/${id}`} className="recipe__link">
+                      <Link to={`/recipes/${id}`} className="recipe__link">
                         <Card.Img
                           variant="top"
                           src={`https://recipes.eerieemu.com${image}`}
@@ -116,11 +119,11 @@ const Recipe = () => {
                           </Card.Text>
                         </Card.Body>
 
-                        <Card.Body>
-                          <Link to={`/recipe/${id}`} className="see__more">
+                        {/* <Card.Body> */}
+                        {/* <Link to={`/recipe/${id}`} className="see__more">
                             See more 👀
-                          </Link>
-                        </Card.Body>
+                          </Link> */}
+                        {/* </Card.Body> */}
                       </Link>
                     </Card>
                   </div>
