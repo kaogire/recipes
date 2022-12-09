@@ -8,7 +8,7 @@ rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
     end
 
     def show
-        recipe = Recipe.find(params[:id])
+        recipe = Recipe.find_by(id: params[:id])
         render json: recipe
     end
 
@@ -19,7 +19,7 @@ rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
     end
 
     def update
-        recipe = Recipe.find(params[:id])
+        recipe = Recipe.find_by(id: params[:id])
         recipe.update(recipe_params)
         render json: recipe
     end

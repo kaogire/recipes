@@ -68,7 +68,7 @@ const SingleRecipe = ({ recipe, loadRecipes }) => {
 
 
   // link to the specific url
-  const shareUrl = `http://localhost:3000/recipes/${id}`;
+  const shareUrl = `/recipes/${id}`;
 
   const handleDelete = async (id) => {
     if (window.confirm(`Are you sure want to delete "${foodname}"`)) {

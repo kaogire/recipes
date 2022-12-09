@@ -12,6 +12,19 @@ const initialValues = {
   password: "",
 };
 
+// const handleSubmit = (e, values) => {
+//   console.log(values)
+//   e.preventDefault();
+//   if (values.username === "admin" && values.password === "admin") {
+//     // toast.success("login Successful");
+//     alert("login Successful");
+//     // navigate("/dashboard");
+//   }else
+//   {
+//     alert("login Failed");
+//   }
+// };
+
 const Login = ({
   handleLoginClose,
   showLogin,
@@ -21,36 +34,46 @@ const Login = ({
 }) => {
   const navigate = useNavigate();
 
-  const { values, handleBlur, handleChange, handleSubmit, errors, touched } =
-    useFormik({
-      initialValues,
-      validationSchema: signupSchema,
-      onSubmit: (values, actions) => {
-        actions.resetForm();
-        handleLoginClose();
-        
+  const handleSubmit = (e, values) => {
+    console.log(values);
+    e.preventDefault();
+    if (values.username === "admin" && values.password === "admin") {
+      // toast.success("login Successful");
+      alert("login Successful");
+      // navigate("/dashboard");
+    } else {
+      alert("login Failed");
+    }
+  };
 
-        fetch("/login", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-          body: JSON.stringify({
-            username: values.username,
-            password: values.password,
-          }),
-        }).then((r) => {
-          if (r.ok) {
-            r.json().then((user) => setUser(user));
-          }
-        });
+  const { values, handleBlur, handleChange, errors, touched } = useFormik({
+    initialValues,
+    validationSchema: signupSchema,
+    onSubmit: (values, actions) => {
+      actions.resetForm();
+      handleLoginClose();
 
-        toast.success("login Successful");
-        handleLogout();
-        navigate("/dashboard");
-      },
-    });
+      fetch("/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          username: values.username,
+          password: values.password,
+        }),
+      }).then((r) => {
+        if (r.ok) {
+          r.json().then((user) => setUser(user));
+        }
+      });
+
+      toast.success("login Successful");
+      handleLogout();
+      navigate("/dashboard");
+    },
+  });
 
   return (
     <>

@@ -23,8 +23,8 @@ const Signup = ({ handleClose, show, handleLoginShow }) => {
       validationSchema: signupSchema,
       onSubmit: (values, actions) => {
         actions.resetForm();
-       
-        fetch("http://127.0.0.1:3000/users", {
+
+        fetch("/users", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -41,7 +41,7 @@ const Signup = ({ handleClose, show, handleLoginShow }) => {
         });
 
         toast.success("Registration Successfully");
-        console.log(values);
+        alert("Registration Successfully");
       },
     });
 

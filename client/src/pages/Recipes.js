@@ -93,7 +93,7 @@ const Recipe = ({recipes}) => {
                         />
                         <h3 >{foodname}</h3>
                         <h2>hello</h2>
-                        <p>{truncate(description, 30)}...</p> */}
+                        <p>{truncate(description, 30)}...</p>
                       </Link>
                     </Card>
                   </div>
