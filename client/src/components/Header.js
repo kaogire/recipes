@@ -21,14 +21,6 @@ function Header({ handleAddRecipeShow }) {
           </div>
         </div>
       </div>
-      {/* <div className="hero-image">
-        <div className="image-sect">
-          <div className="hero-blob"></div>
-          <div className="image-sect image">
-            <img src={spices3} alt="pan-spray" />
-          </div>
-        </div>
-      </div> */}
     </div>
   );
 }
