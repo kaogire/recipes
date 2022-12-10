@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
 
 // layout
 import MainLayout from "../layouts/Main/Index";
@@ -30,7 +30,7 @@ import ProtectedRoute from "./ProtectedRoute";
 // const api2 = "http://127.0.0.1:3000/user";
 
 const MainRoutes = () => {
-  const [recipes, setRecipes] = useState([]);
+  // const [recipes, setRecipes] = useState([]);
   const [user, setUser] = useState(null);
 
   // call loadRecipes function
@@ -40,21 +40,19 @@ const MainRoutes = () => {
 
   // fetch recipes from api
   const loadRecipes = async () => {
-    const response = await axios.get("/recipes");
-    setRecipes(response.data);
-
+    // const response = await axios.get("/recipes");
+    // setRecipes(response.data);
   };
 
   useEffect(() => {
     fetch("/user").then((r) => {
       if (r.ok) {
-        r.json().then((user) => setUser(user));
+        r.json().then((user) => {
+          setUser(user);
+        });
       }
     });
-    // console.log(user);
   }, []);
-
-
 
   return (
     <BrowserRouter>
@@ -62,11 +60,8 @@ const MainRoutes = () => {
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Home />} />
           <Route path="products" element={<Products />} />
-          <Route path="recipes" element={<Recipe recipes={recipes} />} />
-          <Route
-            path="recipes/:recipeId"
-            element={<SingleRecipe loadRecipes={loadRecipes} recipe={recipes} />}
-          />
+          <Route path="recipes" element={<Recipe />} />
+          <Route path="recipes/:recipeId" element={<SingleRecipe />} />
           <Route path="tutorials" element={<Tutorials />} />
           <Route path="about" element={<About />} />
           <Route path="signup" element={<Signup />} />
@@ -85,7 +80,7 @@ const MainRoutes = () => {
             path="addrecipe"
             element={<AddRecipe loadRecipes={loadRecipes} />}
           />
-          <Route path="procedure" element={<Procedure recipe={recipes} />} />
+          <Route path="procedure" element={<Procedure />} />
           <Route path="*" element={<Error />} />
         </Route>
       </Routes>

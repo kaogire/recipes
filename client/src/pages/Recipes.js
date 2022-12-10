@@ -1,29 +1,11 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 import Search from "../components/Search";
+import axios from "axios";
 
-// our api
-// const api = "http://localhost:3000/recipes";
-
-// useEffect(() => {
-//   fetch (api), 
-//   { method: "GET" }
-//   .then((r) => {
-//     if (r.ok) {
-//       r.json().then((recipe) => setRecipe(recipe));
-//     }
-//   });
-// }, []);
-
-
-
-
-
-const Recipe = ({recipes}) => {
-
-  // recipe state
-  // const [recipes, setRecipes] = useState([]);
+const Recipe = () => {
+  const [recipes, setRecipes] = useState([]);
 
   // search filter state
   const [searchRecipeInput, setSearchRecipeInput] = useState("");
@@ -33,6 +15,15 @@ const Recipe = ({recipes}) => {
   const truncate = (str, no_of_words) => {
     return str.split(" ").splice(0, no_of_words).join(" ");
   };
+
+  const load = useCallback(async () => {
+    const res = await axios.get(`/recipes`);
+    setRecipes(res.data);
+  }, []);
+
+  useEffect(() => {
+    load();
+  }, [load]);
 
   // search filter
   const searchItems = (searchValue) => {
@@ -62,73 +53,70 @@ const Recipe = ({recipes}) => {
       <div className="row card__recipe ">
         {searchRecipeInput.length > 1
           ? filteredRecipe.map(({ id, foodname, description, image }) => (
-              <>
-                <div className="col-sm-6 col-md-4 col-lg-3" key={id}>
-                  <div className="">
-                    <Card className="card_container">
-                      <Link to={`/recipe/${id}`} className="recipe__link">
-                        <Card.Img
+              <div className="col-sm-6 col-md-4 col-lg-3" key={id}>
+                <div className="">
+                  <Card className="card_container">
+                    <Link to={`/recipe/${id}`} className="recipe__link">
+                      <Card.Img
                         className="card__image"
-                          // variant="bottom"
-                          src={`https://recipes.eerieemu.com${image}`}
-                        />
-                        <Card.Body>
-                          <Card.Title className="recipe__title">
-                            {foodname}
-                          </Card.Title>
-                          <Card.Text className="recipe__description">
-                            {truncate(description, 30)}...
-                          </Card.Text>
-                        </Card.Body>
+                        // variant="bottom"
+                        src={`https://recipes.eerieemu.com${image}`}
+                      />
+                      <Card.Body>
+                        <Card.Title className="recipe__title">
+                          {foodname}
+                        </Card.Title>
+                        <Card.Text className="recipe__description">
+                          {truncate(description, 30)}...
+                        </Card.Text>
+                      </Card.Body>
 
-                        <Card.Body>
-                          <Link to={`/recipe/${id}`} className="see__more">
-                            See more 👀
-                          </Link>
-                        </Card.Body> 
+                      <Card.Body>
+                        <Link to={`/recipe/${id}`} className="see__more">
+                          See more 👀
+                        </Link>
+                      </Card.Body>
 
-                        <img className="card__image"
-                          src="https://recipes.eerieemu.com${image}"
-                          alt="photo"
-                        />
-                        <h3 >{foodname}</h3>
-                        <h2>hello</h2>
-                        <p>{truncate(description, 30)}...</p>
-                      </Link>
-                    </Card>
-                  </div>
+                      <img
+                        className="card__image"
+                        src={`https://recipes.eerieemu.com${image}`}
+                        alt=""
+                      />
+                      <h3>{foodname}</h3>
+                      <h2>hello</h2>
+                      <p>{truncate(description, 30)}...</p>
+                    </Link>
+                  </Card>
                 </div>
-              </>
+              </div>
             ))
           : recipes.map(({ id, foodname, description, image }) => (
-              <>
-                <div className="col-sm-6 col-md-4 col-lg-3" key={id}>
-                  <div className="">
-                    <Card className="card_container">
-                      <Link to={`/recipes/${id}`} className="recipe__link">
-                        <Card.Img
-                          variant="top"
-                          src={`https://recipes.eerieemu.com${image}`}
-                        />
-                        <Card.Body>
-                          <Card.Title className="recipe__title">
-                            {foodname}
-                          </Card.Title>
-                          <Card.Text className="recipe__description">
-                            {truncate(description, 30)}...
-                          </Card.Text>
-                        </Card.Body>
+              <div className="col-sm-6 col-md-4 col-lg-3" key={id}>
+                <div className="">
+                  <Card className="card_container">
+                    <Link to={`/recipes/${id}`} className="recipe__link">
+                      <Card.Img
+                        variant="top"
+                        src={`https://recipes.eerieemu.com${image}`}
+                      />
+                      <Card.Body>
+                        <Card.Title className="recipe__title">
+                          {foodname}
+                        </Card.Title>
+                        <Card.Text className="recipe__description">
+                          {truncate(description, 30)}...
+                        </Card.Text>
+                      </Card.Body>
 
-                        {/* <Card.Body> */}
-                        {/* <Link to={`/recipe/${id}`} className="see__more">
-                            See more 👀
-                          </Link> */}
-                        {/* </Card.Body> */}
-                      </Link>
-                    </Card>
-                  </div>
+                      {/* <Card.Body> */}
+                      {/* <Link to={`/recipe/${id}`} className="see__more">
+                          See more 👀
+                        </Link> */}
+                      {/* </Card.Body> */}
+                    </Link>
+                  </Card>
                 </div>
-              </>
+              </div>
             ))}
       </div>
     </div>
