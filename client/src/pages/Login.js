@@ -6,11 +6,25 @@ import { useFormik } from "formik";
 import { signupSchema } from "../schemas/login";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { useUser } from "../context/auth";
 
 const initialValues = {
   username: "",
   password: "",
 };
+
+// const handleSubmit = (e, values) => {
+//   console.log(values)
+//   e.preventDefault();
+//   if (values.username === "admin" && values.password === "admin") {
+//     // toast.success("login Successful");
+//     alert("login Successful");
+//     // navigate("/dashboard");
+//   }else
+//   {
+//     alert("login Failed");
+//   }
+// };
 
 const Login = ({
   handleLoginClose,
@@ -20,37 +34,50 @@ const Login = ({
   handleLogout,
 }) => {
   const navigate = useNavigate();
+  const {login} = useUser()
 
-  const { values, handleBlur, handleChange, handleSubmit, errors, touched } =
-    useFormik({
-      initialValues,
-      validationSchema: signupSchema,
-      onSubmit: (values, actions) => {
-        actions.resetForm();
-        handleLoginClose();
-        
+  const handleCSubmit = (values) => {
+    console.log(values.username);
+    if (values.username === "admin" && values.password === "admin") {
+      // toast.success("login Successful");
+      alert("login Successful");
+      navigate("/dashboard");
+    } else {
+      alert("login Failed");
+    }
+  };
 
-        fetch("http://localhost:3000/login", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-          body: JSON.stringify({
-            username: values.username,
-            password: values.password,
-          }),
-        }).then((r) => {
-          if (r.ok) {
-            r.json().then((user) => setUser(user));
-          }
-        });
+  const { handleSubmit, values, handleBlur, handleChange, errors, touched } = useFormik({
+    initialValues,
+    validationSchema: signupSchema,
+    onSubmit: (values, actions) => {
+      actions.resetForm();
+      // handleCSubmit(values);
+      
+      fetch("/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          username: values.username,
+          password: values.password,
+        }),
+      }).then((r) => {
+        if (r.ok) {
+          r.json().then((user) => login(user));
+        }
+      });
 
-        toast.success("login Successful");
-        handleLogout();
-        navigate("/dashboard");
-      },
-    });
+      handleLoginClose();
+      toast.success("login Successful");
+      // handleLogout();
+      navigate("/dashboard");
+    },
+  });
+
+  
 
   return (
     <>
@@ -61,7 +88,7 @@ const Login = ({
         backdrop="static"
         keyboard={false}
       >
-        <Form onSubmit={handleSubmit} className="m-4">
+        <Form className="m-4">
           <Modal.Header closeButton>
             {/* <Modal.Title className="abril">Welcome Back! 👋</Modal.Title> */}
           </Modal.Header>
@@ -101,7 +128,7 @@ const Login = ({
             </div>
           </Modal.Body>
           <Modal.Footer className="submit__btn">
-            <Button type="submit">Login</Button>
+            <Button onClick={handleSubmit} type="submit">Login</Button>
             <div className="d-flex align-items-center justify-content-center m-auto mt-3">
               <span className="me-3">No account ?</span>
               <span onClick={handleLoginClose}>

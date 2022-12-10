@@ -5,7 +5,7 @@ const Error = () => {
   return (
     <div className="page__not__found">
       <h1 className="error__header abril">4🍔4</h1>
-      <h3>OOPSIE POOPSIE</h3>
+      <h3>OOPS</h3>
       <h5>This not the page you are looking for ?</h5>
       <h6>Go to 👇</h6>
       <button className="btn btn-primary">

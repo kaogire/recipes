@@ -1,11 +1,7 @@
-import React, { useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faArrowLeft,
-  faBookmark,
-  faHeart,
-} from "@fortawesome/free-solid-svg-icons";
+import { faBookmark, faHeart } from "@fortawesome/free-solid-svg-icons";
 import {
   FacebookShareButton,
   FacebookIcon,
@@ -21,10 +17,6 @@ import { toast } from "react-toastify";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
-// our api
-const api = "http://localhost:3000/recipes";
-
-// initial data state
 const initialState = {
   foodname: "",
   description: "",
@@ -36,8 +28,9 @@ const initialState = {
   image: "",
 };
 
-const SingleRecipe = ({ recipe, loadRecipes }) => {
+const SingleRecipe = () => {
   const [inputs, setInputs] = useState(initialState);
+  const [recipe, setRecipe] = useState();
   const [bookmark, setBookmark] = useState(false);
   const [like, setLike] = useState(false);
 
@@ -49,90 +42,79 @@ const SingleRecipe = ({ recipe, loadRecipes }) => {
   const { recipeId } = useParams();
   const navigate = useNavigate();
 
-  // filter recipes
-  const selectedRecipe = recipe.find((recip) => recip.id === Number(recipeId));
+  const loadRecipe = useCallback(async (rid) => {
+    const res = await axios.get(`/recipes/${rid}`);
+
+    setRecipe(res.data);
+  }, []);
+
+  useEffect(() => {
+    if (!recipeId) return;
+    loadRecipe(recipeId);
+  }, [recipeId, loadRecipe]);
 
   // destructuring
-  const {
-    id,
-    ingredients,
-    foodname,
-    image,
-    servings,
-    rating,
-    instructions,
-    country,
-    description,
-  } = selectedRecipe;
 
-  // link to the spoaecific url
-  const shareUrl = `http://localhost:3000/recipe/${id}`;
+  useEffect(() => {
+    if (!recipe || recipe.id === inputs.id) return;
+    const {
+      id,
+      ingredients,
+      foodname,
+      image,
+      servings,
+      rating,
+      instructions,
+      country,
+      description,
+    } = recipe;
+    setInputs({
+      ...inputs,
+      id,
+      ingredients,
+      foodname,
+      image,
+      servings,
+      rating,
+      instructions,
+      country,
+      description,
+    });
+  }, [recipe, inputs]);
+
+  // link to the specific url
+  const shareUrl = useMemo(() => {
+    if (recipe) return `/recipes/${recipe.id}`;
+  }, [recipe]);
 
   const handleDelete = async (id) => {
-    if (window.confirm(`Are you sure want to delete "${foodname}"`)) {
-      axios.delete(`${api}/${id}`);
+    if (window.confirm(`Are you sure want to delete "${inputs.foodname}"`)) {
+      axios.delete(`${"/recipes"}/${id}`);
       toast.success("Deleted Successfully");
-      navigate("/recipe");
-      setTimeout(() => loadRecipes(), 500);
+      navigate("/recipes");
     } else {
       toast.error("Be keen on what you want to delete");
     }
   };
 
   const handleRecipeUpdate = () => {
+    axios.put(`/recipes/${recipe.id}`, inputs);
     toast.success("Updated Successfully");
-    navigate("/recipe");
+    navigate("/recipes");
   };
 
   const handleUpdate = () => {};
 
   const handleChange = (e) => {
-    let { name, value } = e.target;
-
     setInputs({
       ...inputs,
-      [name]: value,
+      [e.target.name]: e.target.value,
     });
   };
 
   return (
     <div className="single__container">
       <div className="single">
-        <div
-          className="left recipe__bg"
-          style={{
-            backgroundImage: `url(https://recipes.eerieemu.com
-            ${image}
-          )`,
-            height: "auto",
-          }}
-        >
-          <Link to="/recipe">
-            <FontAwesomeIcon
-              icon={faArrowLeft}
-              style={{ color: "#ffffff", cursor: "pointer", fontSize: "40px" }}
-            />
-          </Link>
-          <div className="left-socials">
-            <div className="left-line"></div>
-            <FacebookShareButton
-              className="left-socials-icon"
-              url={shareUrl}
-              quote={foodname}
-              hashtag={"#recipes"}
-            >
-              <FacebookIcon size={40} round={true} />
-            </FacebookShareButton>
-            <TwitterShareButton className="left-socials-icon" url={shareUrl}>
-              <TwitterIcon size={40} round={true} />
-            </TwitterShareButton>
-            <WhatsappShareButton className="left-socials-icon" url={shareUrl}>
-              <WhatsappIcon size={40} round={true} />
-            </WhatsappShareButton>
-
-            <div className="left-line" style={{ marginTop: "0.6em" }}></div>
-          </div>
-        </div>
         <div className="right">
           <div className="right-header">
             <div className="d-flex align-items-center justify-content-between p-4">
@@ -147,7 +129,7 @@ const SingleRecipe = ({ recipe, loadRecipes }) => {
                     width: "25px",
                     padding: "5px",
                   }}
-                  onClick={() => handleUpdate(id)}
+                  onClick={() => handleUpdate(inputs.id)}
                 >
                   <BsPencilSquare />
                 </span>
@@ -163,20 +145,23 @@ const SingleRecipe = ({ recipe, loadRecipes }) => {
                     width: "25px",
                     padding: "5px",
                   }}
-                  onClick={() => handleDelete(id)}
+                  onClick={() => handleDelete(inputs.id)}
                 >
                   <AiOutlineDelete />
                 </span>
               </div>
             </div>
             <div className="right-name">
-              <h2 className="creepster">{foodname}</h2>
+              <h2 className="creepster">{inputs.foodname}</h2>
               <div className="icons cursor">
                 <span
                   className={bookmark ? "bookmark" : ""}
                   onClick={() => setBookmark(true)}
                 >
-                  <FontAwesomeIcon icon={faBookmark} />
+                  <FontAwesomeIcon
+                    icon={faBookmark}
+                    style={{ marginLeft: "20", paddingTop: "0" }}
+                  />
                 </span>
                 <span
                   className={like ? "like" : ""}
@@ -184,22 +169,24 @@ const SingleRecipe = ({ recipe, loadRecipes }) => {
                 >
                   <FontAwesomeIcon
                     icon={faHeart}
-                    style={{ marginLeft: "20" }}
+                    style={{ marginLeft: "20", paddingTop: "0" }}
                   />
                 </span>
               </div>
             </div>
             <div className="right-details">
               <h4 className="oswald">
-                Serves: <span className="bg-success badge">{servings}</span>
+                Serves:{" "}
+                <span className="bg-success badge">{inputs.servings}</span>
               </h4>
               <h4>{/* Time: <span>{total_time_string}</span> */}</h4>
               <h4 className="oswald">
-                Country: <span className="bg-success badge">{country}</span>
+                Country:{" "}
+                <span className="bg-success badge">{inputs.country}</span>
               </h4>
             </div>
             <div className="right-details-desc">
-              <p>{description}</p>
+              <p>{inputs.description}</p>
             </div>
             <div className="right-selectors">
               <p className="new">Ingredients</p>
@@ -208,7 +195,7 @@ const SingleRecipe = ({ recipe, loadRecipes }) => {
           <div className="right-bottom">
             <div className="bottom one">
               <pre className="pre">
-                <code>{ingredients}</code>
+                <code>{inputs.ingredients}</code>
               </pre>
             </div>
           </div>
@@ -218,7 +205,7 @@ const SingleRecipe = ({ recipe, loadRecipes }) => {
           <div className="right-bottom">
             <div className="bottom one">
               <pre className="pre">
-                <code>{instructions}</code>
+                <code>{inputs.instructions}</code>
               </pre>
             </div>
           </div>
@@ -244,8 +231,8 @@ const SingleRecipe = ({ recipe, loadRecipes }) => {
                     type="text"
                     name="foodname"
                     placeholder="name:"
-                    value={foodname}
                     onChange={handleChange}
+                    value={inputs.foodname}
                   />
                   <br />
 
@@ -254,7 +241,7 @@ const SingleRecipe = ({ recipe, loadRecipes }) => {
                     type="text"
                     name="description"
                     placeholder="full description:"
-                    value={description}
+                    value={inputs.description}
                     onChange={handleChange}
                   />
                   <br />
@@ -262,7 +249,7 @@ const SingleRecipe = ({ recipe, loadRecipes }) => {
                   <input
                     type="text"
                     name="ingredients"
-                    value={ingredients}
+                    value={inputs.ingredients}
                     placeholder="onions, ginger, eggs,..."
                     onChange={handleChange}
                   />
@@ -273,7 +260,7 @@ const SingleRecipe = ({ recipe, loadRecipes }) => {
                     type="text"
                     name="instructions"
                     placeholder="write your instructions:"
-                    value={instructions}
+                    value={inputs.instructions}
                     onChange={handleChange}
                   />
 
@@ -282,7 +269,7 @@ const SingleRecipe = ({ recipe, loadRecipes }) => {
                     <input
                       type="text"
                       name="country"
-                      value={country}
+                      value={inputs.country}
                       placeholder="country"
                       onChange={handleChange}
                     />
@@ -291,7 +278,7 @@ const SingleRecipe = ({ recipe, loadRecipes }) => {
                     <input
                       type="number"
                       name="servings"
-                      value={servings}
+                      value={inputs.servings}
                       placeholder="2"
                       onChange={handleChange}
                     />
@@ -302,7 +289,7 @@ const SingleRecipe = ({ recipe, loadRecipes }) => {
                     <input
                       type="number"
                       name="rating"
-                      value={rating}
+                      value={inputs.rating}
                       placeholder="0 - 10"
                       onChange={handleChange}
                     />
@@ -312,7 +299,7 @@ const SingleRecipe = ({ recipe, loadRecipes }) => {
                     <input
                       type="text"
                       name="image"
-                      value={image}
+                      value={inputs.image}
                       placeholder="Paste image url/link"
                       onChange={handleChange}
                     />

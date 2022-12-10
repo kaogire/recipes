@@ -158,8 +158,7 @@ font-family: 'Creepster', cursive;
 .link__title:hover {
   color: var(--primary-color);
 }
-
-.nav__linkRegister {
+Register .nav__linkRegister {
   background-color: var(--primary-color);
   padding: 0.4rem 0.35rem;
   border-radius: 6px;
@@ -638,7 +637,19 @@ div.col-lg-1,
 }
 
 .card_container {
-  min-height: 70vh !important;
+  min-height: 60vh !important;
+  margin: 1.2em;
+  background-color: #baecee !important;
+}
+
+.card_details {
+  background-color: rgba(94, 151, 255, 0.4);
+  width: 16.8vw;
+  height: auto;
+}
+
+.card_text {
+  padding: "0em 1em";
 }
 
 .recipe__title {
@@ -647,12 +658,22 @@ div.col-lg-1,
 
 .recipe__description {
   text-align: justify;
-  letter-spacing: 1.4px;
+  /* letter-spacing: 1.4px; */
 }
 
 .recipe__link {
   text-decoration: none;
   color: #000000;
+}
+
+.recipe__link img {
+  width: 100%;
+  height: 15em;
+}
+
+.recipe__link {
+  width: 100%;
+  height: 10em;
 }
 
 .recipe__link:hover {
@@ -752,14 +773,13 @@ input[type="search"]::-webkit-search-results-decoration {
   width: 100%;
   height: auto;
   display: flex;
-  font-family: "Roboto";
+  font-family: "Lato", sans-serif;
   margin: 40px auto;
   /* overflow: hidden; */
 }
 
 .single .left,
 .single .right {
-  width: 50%;
   height: 100%;
 }
 
@@ -805,9 +825,9 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .right-header {
-  background-color: #ec5924;
+  background-color: #baecee;
   padding: 0.5em 0.5em 0em 0.5em;
-  color: #ffffff;
+  color: #000000;
 }
 
 .right-name {
@@ -834,7 +854,7 @@ input[type="search"]::-webkit-search-results-decoration {
 .right-details-desc p {
   font-size: 1em;
   border-radius: 0px;
-  background: #e58080;
+  background: #2ccbd3;
   border-radius: 0 0 12px 12px;
   padding: 12px;
 }
@@ -907,7 +927,7 @@ input[type="search"]::-webkit-search-results-decoration {
   }
 
   .single .left {
-    width: 100%;
+    width: 20%;
     max-height: 200vh;
   }
 
@@ -1127,7 +1147,7 @@ input[type="search"]::-webkit-search-results-decoration {
   border-radius: 50px;
   cursor: pointer;
   margin-top: 1em;
-  background-color: #ec5924;
+  background-color: #2ccbd3;
 }
 
 .dash .three {
@@ -1143,11 +1163,11 @@ input[type="search"]::-webkit-search-results-decoration {
 .liked-recipes-name {
   display: flex;
   justify-content: space-between;
-  color: #ec5924;
+  color: #2ccbd3;
 }
 
 .liked-recipes-name h3 {
-  color: #ec5924;
+  color: #2ccbd3;
 }
 
 .recipe-name-icon {
@@ -1206,7 +1226,7 @@ input[type="search"]::-webkit-search-results-decoration {
 .edit-card {
   width: 600px;
   padding: 1em;
-  background-color: #ec5924;
+  background-color: #2ccbd3;
   box-sizing: border-box;
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
   border-radius: 10px;
@@ -1353,7 +1373,7 @@ input[type="search"]::-webkit-search-results-decoration {
   justify-content: flex-end; */
   background-color: var(--primary-color);
   border: none;
-  padding: 10px 27px ;
+  padding: 10px 27px;
   margin-left: 94%;
   border-radius: 0.6rem;
   font-size: 0.8em;

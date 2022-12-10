@@ -1,48 +1,35 @@
-#ReCipe
+#recipe
 ---
 Live links
-Click [here](https://recipe-app-sang-4.vercel.app/) to view live site. 
+Click [here]() to view live site. 
 ---
 
 
 ---
-Cooks Create
+Table for 2 Recipes
 
-This project is being developed and maintained by:
-* Allan Kiprop - Back End Developer/Scrum
-* Douglas Obara - Front End  Developer
-* Precious Omondi - Front End Developer
-* Nicholas Kipkirui - Back End Developer
-* Harrison Omondi - Front End Developer
-* Maryanne Onyango - Back End developer
+Creators and Collaborators
+* Alex Wachira - Back-end 
+* Bernard Cheruiyot - Back-end, Scrum master
+* Jackline Kariuki - Front-end 
+* Shaniz Nyawira - Front-end 
+
 ---
 
 ##Description
 
-ReCipe is an app that allows users to view, add, delete, update and comment on recipes, be it their own or those created by other users. Users can also view other users' recipes and comment on them. Users also have the ability to share their favortie recipes with other users via social media platforms.
+Table for 2 Recipes is an app that allows the user to view, create, modify and delete the recipes and/or comments.
 
-![alt text](./readmephotos/p1.JPG)
-![alt text](./readmephotos/p2.JPG)
-![alt text](./readmephotos/p3.JPG)
-![alt text](./readmephotos/p4.JPG)
-![alt text](./readmephotos/p7.JPG)
-![alt text](./readmephotos/p5.JPG)
-![alt text](./readmephotos/p6.JPG)
 
 ---
 
 ##Setup/Installation Requirements
 ```
-Fork/Clone this repository to your local machine.(https://github.com/sang-4/recipe-app)
+Fork/Clone this repository to your local machine.(https://github.com/benardcheruiyot/recipe)
 & cd into the project folder
-& Run npm install to install all dependencies
-& Run npm start to start the app
+& Run yarn install to install all dependencies
+& Run yarn --cwd client start to start the frontend  and rails s to start the server
 ```
-
----
-
-##Known Bugs
-There are no known bugs at the moment. If you encounter any, please contact us.
 
 ---
 
@@ -51,18 +38,10 @@ There are no known bugs at the moment. If you encounter any, please contact us.
 * CSS
 * JavaScript
 * React
-* Redux
 * Ruby on Rails(API)
-* PostgreSQL
+* SQLite3
 * Heroku
 * Postman
-
----
-
-##Support and contact details
-If you have any issues, questions, ideas or concerns, please contact us at:
-
-recipe.app@gmail.com
 
 ---
 

@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import axios from "axios";
 
 // our api
-const api = "http://localhost:3000/recipes";
+// const api = "http://localhost:3000/recipes";
 
 // initial data state
 const initialState = {
@@ -61,7 +61,7 @@ const AddRecipe = ({ loadRecipes }) => {
       toast.error("please fill all input fields");
     } else {
       // post recipe to our api endpoint
-      axios.post(api, inputs);
+      axios.post("/recipes", inputs);
 
       // show success message after post to the db
       toast.success("Added successfully");
@@ -70,7 +70,7 @@ const AddRecipe = ({ loadRecipes }) => {
       setInputs(initialState);
 
       // navigate back to homepage
-      navigate("/recipe");
+      navigate("/recipes");
 
       // call recipe render function
       setTimeout(() => loadRecipes(), 500);

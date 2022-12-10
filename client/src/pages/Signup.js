@@ -4,7 +4,7 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import { useFormik } from "formik";
 import { signupSchema } from "../schemas/register";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const initialValues = {
@@ -17,14 +17,16 @@ const initialValues = {
 };
 
 const Signup = ({ handleClose, show, handleLoginShow }) => {
+    const navigate = useNavigate();
+
   const { values, handleBlur, handleChange, handleSubmit, errors, touched } =
     useFormik({
       initialValues,
       validationSchema: signupSchema,
       onSubmit: (values, actions) => {
         actions.resetForm();
-       
-        fetch("http://127.0.0.1:3000/users", {
+
+        fetch("/users", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -39,9 +41,23 @@ const Signup = ({ handleClose, show, handleLoginShow }) => {
             password_confirmation: values.password_confirmation,
           }),
         });
+        // navigate("/dashboard");
+        // .then ((r) => {
+        //   if (r.ok) {
+        //     r.json().then((user) => 
+        //     // { onLogin(user) }
+        //     console.log(user)
+        //     );
+        //   } else {
+        //     r.json().then((err) => console.log(err));
+        //   }
+        // });
 
         toast.success("Registration Successfully");
-        console.log(values);
+        // alert("Registration Successfully");
+        handleClose();
+
+
       },
     });
 
@@ -170,7 +186,7 @@ const Signup = ({ handleClose, show, handleLoginShow }) => {
             </div>
           </Modal.Body>
           <Modal.Footer className="submit__btn">
-            <Button type="submit">Create an account</Button>
+            <Button type="submit" onClick={handleSubmit} >Create an account</Button>
             <div className="d-flex align-items-center justify-content-center m-auto mt-3">
               <span className="me-3">Already have an account ?</span>
               <span onClick={handleClose}>

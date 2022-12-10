@@ -1,24 +1,21 @@
-import React, { useState } from "react";
-import { NavLink, Link,useNavigate } from "react-router-dom";
+import React, { useCallback, useState } from "react";
+import { NavLink, Link, useNavigate } from "react-router-dom";
 import { Nav, Navbar } from "react-bootstrap";
 
-// images
-// import logo from "../assets/Images/recipe-sharing-logo-new.png";
-
 // pages
-import Register from "../pages/Signup";
 import Login from "../pages/Login";
-import { toast } from "react-toastify";
+import Signup from "../pages/Signup";
+import { useUser } from "../context/auth";
 
 const navLogo = {
-  "text-decoration": "none",
+  textDecoration: "none",
 };
 
 const NavBar = () => {
   // modal states
   const [show, setShow] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
-  const [register, setRegister] = useState(true);
+  const { logout, user } = useUser();
 
   // register open & close modal
   const handleClose = () => setShow(false);
@@ -28,29 +25,12 @@ const NavBar = () => {
   const handleLoginClose = () => setShowLogin(false);
   const handleLoginShow = () => setShowLogin(true);
 
-  // navLinks
-  const links = [
-    { id: 1, link: "Recipe", resourceLink: "/recipe" },
-    { id: 2, link: "Products", resourceLink: "/products" },
-    { id: 3, link: "Tutorials", resourceLink: "/tutorials" },
-    { id: 4, link: "About Us", resourceLink: "/about" },
-  ];
+  const navigate = useNavigate();
 
-   const navigate = useNavigate();
-
-  const handleLogout = () => {
-    setRegister(false);
-  };
-
-  const handleRegLogout = () => {
-    fetch("http://localhost:3000/logout", { method: "DELETE" }).then((r) => {
-      if (r) {
-        navigate("/");
-        setRegister(true);
-        toast.success("Logout Successful");
-      }
-    });
-  };
+  const handleLogout = useCallback(() => {
+    navigate("/");
+    logout();
+  }, [logout, navigate]);
 
   return (
     <>
@@ -62,8 +42,10 @@ const NavBar = () => {
       >
         <Link to="/" title="Welcome to Table for 2 Recipes" style={navLogo}>
           <div className="logo">
-            <h1> Table for 2 <br/> 
-            Recipes
+            <h1>
+              {" "}
+              Table for 2 <br />
+              Recipes
             </h1>
           </div>
         </Link>
@@ -71,39 +53,40 @@ const NavBar = () => {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto"></Nav>
           <Nav className="nav__link">
-            {links.map(({ id, link, resourceLink }) => (
-              <NavLink className="nav__link" to={resourceLink} key={id}>
-                <span className="link__title">{link}</span>
-              </NavLink>
-            ))}
-            {register ? (
+            <NavLink className="nav__link" to="/recipes">
+              <span className="link__title">Recipes</span>
+            </NavLink>
+            <NavLink className="nav__link" to="/products">
+              <span className="link__title">Products</span>
+            </NavLink>
+            <NavLink className="nav__link" to="/tutorials">
+              <span className="link__title">Tutorials</span>
+            </NavLink>
+            <NavLink className="nav__link" to="/about">
+              <span className="link__title">About Us</span>
+            </NavLink>
+
+            {!user?.id ? (
               <>
-                <Link
+                <button
                   className="nav__link nav__linkRegister"
                   onClick={handleShow}
                 >
-                  <span className="link__titleRegister d-flex align-items-center justify-content-center">
                     Sign Up
-                  </span>
-                </Link>
+                </button>
               </>
             ) : (
               <>
-                <Link
-                  className="nav__link nav__linkRegister"
-                  onClick={handleRegLogout}
-                >
-                  <span className="link__titleRegister d-flex align-items-center justify-content-center">
+                <button className="nav__link nav__linkRegister" onClick={handleLogout}>
                     Logout
-                  </span>
-                </Link>
+                </button>
               </>
             )}
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-      {/* register Modal */}
-      <Register
+      {/* signup Modal */}
+      <Signup
         handleClose={handleClose}
         handleLoginShow={handleLoginShow}
         show={show}
@@ -114,7 +97,6 @@ const NavBar = () => {
         handleLoginClose={handleLoginClose}
         handleShow={handleShow}
         showLogin={showLogin}
-        handleLogout={handleLogout}
       />
     </>
   );
