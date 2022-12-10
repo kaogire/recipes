@@ -1,0 +1,8 @@
+{
+  "short_name": "Recipes app",
+  "name": "Table for 2 recipes",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#010101",
+  "background_color": "#fefefe"
+}
