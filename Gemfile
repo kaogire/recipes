@@ -51,6 +51,6 @@ group :test do
 end
 
 gem "active_model_serializers", "~> 0.10.12"
-gem 'sqlite3', '~> 1.3', '>= 1.3.11'
+gem 'pg', '~> 1.1'
 gem 'rest-client'
 gem 'faker'
