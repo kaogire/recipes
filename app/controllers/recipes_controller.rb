@@ -14,7 +14,7 @@ rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
 
     def create
         puts JSON.pretty_generate(recipe_params)
-        recipe = Recipe.create(recipe_params)
+        recipe = @current_user.recipes.create(recipe_params)
         render json: recipe
     end
 

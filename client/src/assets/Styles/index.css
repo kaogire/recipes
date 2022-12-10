@@ -158,8 +158,7 @@ font-family: 'Creepster', cursive;
 .link__title:hover {
   color: var(--primary-color);
 }
-
-.nav__linkRegister {
+Register .nav__linkRegister {
   background-color: var(--primary-color);
   padding: 0.4rem 0.35rem;
   border-radius: 6px;
@@ -640,20 +639,18 @@ div.col-lg-1,
 .card_container {
   min-height: 60vh !important;
   margin: 1.2em;
-    background-color: #baecee !important;
-
+  background-color: #baecee !important;
 }
 
-
-.card_details{
+.card_details {
   background-color: rgba(94, 151, 255, 0.4);
   width: 16.8vw;
   height: auto;
-};
+}
 
-.card_text{
+.card_text {
   padding: "0em 1em";
-};
+}
 
 .recipe__title {
   text-align: center;
@@ -669,7 +666,7 @@ div.col-lg-1,
   color: #000000;
 }
 
-.recipe__link img{
+.recipe__link img {
   width: 100%;
   height: 15em;
 }
@@ -678,7 +675,6 @@ div.col-lg-1,
   width: 100%;
   height: 10em;
 }
-
 
 .recipe__link:hover {
   color: #000000;
@@ -784,7 +780,6 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .single .left,
 .single .right {
-  width: 50%;
   height: 100%;
 }
 
@@ -1152,7 +1147,7 @@ input[type="search"]::-webkit-search-results-decoration {
   border-radius: 50px;
   cursor: pointer;
   margin-top: 1em;
-  background-color: #ec5924;
+  background-color: #2ccbd3;
 }
 
 .dash .three {
@@ -1168,11 +1163,11 @@ input[type="search"]::-webkit-search-results-decoration {
 .liked-recipes-name {
   display: flex;
   justify-content: space-between;
-  color: #ec5924;
+  color: #2ccbd3;
 }
 
 .liked-recipes-name h3 {
-  color: #ec5924;
+  color: #2ccbd3;
 }
 
 .recipe-name-icon {
@@ -1231,7 +1226,7 @@ input[type="search"]::-webkit-search-results-decoration {
 .edit-card {
   width: 600px;
   padding: 1em;
-  background-color: #ec5924;
+  background-color: #2ccbd3;
   box-sizing: border-box;
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
   border-radius: 10px;
@@ -1378,7 +1373,7 @@ input[type="search"]::-webkit-search-results-decoration {
   justify-content: flex-end; */
   background-color: var(--primary-color);
   border: none;
-  padding: 10px 27px ;
+  padding: 10px 27px;
   margin-left: 94%;
   border-radius: 0.6rem;
   font-size: 0.8em;

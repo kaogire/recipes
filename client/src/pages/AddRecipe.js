@@ -70,7 +70,7 @@ const AddRecipe = ({ loadRecipes }) => {
       setInputs(initialState);
 
       // navigate back to homepage
-      navigate("/recipe");
+      navigate("/recipes");
 
       // call recipe render function
       setTimeout(() => loadRecipes(), 500);

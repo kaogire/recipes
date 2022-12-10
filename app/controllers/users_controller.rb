@@ -8,8 +8,13 @@ class UsersController < ApplicationController
     end
 
     def show
-        user = User.find_by(session[:user_id])
-        render json: user
+        user = User.find_by_id(session[:user_id])
+        if user
+            render json: user
+        else
+            render json: {error: "You must be logged in to access this content"}, status: :unauthorized
+        end
+
     end
 
     def create
@@ -20,6 +25,7 @@ class UsersController < ApplicationController
             render json: user, status: :created
         else
             render :action => 'new'
+        end
 
     end
 
@@ -38,12 +44,11 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.require(:user).permit(:firstname, :lastname, :username, :email, :password, :password_confirmation)
+        params.permit(:firstname, :lastname, :username, :email, :password, :password_confirmation)
     end
 
     def record_invalid
         render json: {error: "Invalid user"}, status: :unprocessable_entity
     end
 
-end
 end

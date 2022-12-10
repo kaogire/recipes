@@ -115,39 +115,6 @@ const SingleRecipe = () => {
   return (
     <div className="single__container">
       <div className="single">
-        <div
-          className="left recipe__bg"
-          style={{
-            backgroundImage: `url(${inputs.image})`,
-            height: "auto",
-          }}
-        >
-          {/* <Link to="/recipe">
-            <FontAwesomeIcon
-              icon={faArrowLeft}
-              style={{ color: "#ffffff", cursor: "pointer", fontSize: "40px" }}
-            />
-          </Link> */}
-          <div className="left-socials">
-            <div className="left-line"></div>
-            <FacebookShareButton
-              className="left-socials-icon"
-              url={shareUrl}
-              quote={inputs.foodname}
-              hashtag={"#recipes"}
-            >
-              <FacebookIcon size={40} round={true} />
-            </FacebookShareButton>
-            <TwitterShareButton className="left-socials-icon" url={shareUrl}>
-              <TwitterIcon size={40} round={true} />
-            </TwitterShareButton>
-            <WhatsappShareButton className="left-socials-icon" url={shareUrl}>
-              <WhatsappIcon size={40} round={true} />
-            </WhatsappShareButton>
-
-            <div className="left-line" style={{ marginTop: "0.6em" }}></div>
-          </div>
-        </div>
         <div className="right">
           <div className="right-header">
             <div className="d-flex align-items-center justify-content-between p-4">

@@ -6,6 +6,7 @@ import { useFormik } from "formik";
 import { signupSchema } from "../schemas/login";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { useUser } from "../context/auth";
 
 const initialValues = {
   username: "",
@@ -33,26 +34,26 @@ const Login = ({
   handleLogout,
 }) => {
   const navigate = useNavigate();
+  const {login} = useUser()
 
-  const handleSubmit = (e, values) => {
-    console.log(values);
-    e.preventDefault();
+  const handleCSubmit = (values) => {
+    console.log(values.username);
     if (values.username === "admin" && values.password === "admin") {
       // toast.success("login Successful");
       alert("login Successful");
-      // navigate("/dashboard");
+      navigate("/dashboard");
     } else {
       alert("login Failed");
     }
   };
 
-  const { values, handleBlur, handleChange, errors, touched } = useFormik({
+  const { handleSubmit, values, handleBlur, handleChange, errors, touched } = useFormik({
     initialValues,
     validationSchema: signupSchema,
     onSubmit: (values, actions) => {
       actions.resetForm();
-      handleLoginClose();
-
+      // handleCSubmit(values);
+      
       fetch("/login", {
         method: "POST",
         headers: {
@@ -65,15 +66,18 @@ const Login = ({
         }),
       }).then((r) => {
         if (r.ok) {
-          r.json().then((user) => setUser(user));
+          r.json().then((user) => login(user));
         }
       });
 
+      handleLoginClose();
       toast.success("login Successful");
-      handleLogout();
+      // handleLogout();
       navigate("/dashboard");
     },
   });
+
+  
 
   return (
     <>
@@ -84,7 +88,7 @@ const Login = ({
         backdrop="static"
         keyboard={false}
       >
-        <Form onSubmit={handleSubmit} className="m-4">
+        <Form className="m-4">
           <Modal.Header closeButton>
             {/* <Modal.Title className="abril">Welcome Back! 👋</Modal.Title> */}
           </Modal.Header>
@@ -124,7 +128,7 @@ const Login = ({
             </div>
           </Modal.Body>
           <Modal.Footer className="submit__btn">
-            <Button type="submit">Login</Button>
+            <Button onClick={handleSubmit} type="submit">Login</Button>
             <div className="d-flex align-items-center justify-content-center m-auto mt-3">
               <span className="me-3">No account ?</span>
               <span onClick={handleLoginClose}>

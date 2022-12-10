@@ -44,15 +44,15 @@ const MainRoutes = () => {
     // setRecipes(response.data);
   };
 
-  useEffect(() => {
-    fetch("/user").then((r) => {
-      if (r.ok) {
-        r.json().then((user) => {
-          setUser(user);
-        });
-      }
-    });
-  }, []);
+  // useEffect(() => {
+  //   fetch("/user").then((r) => {
+  //     if (r.ok) {
+  //       r.json().then((user) => {
+  //         setUser(user);
+  //       });
+  //     }
+  //   });
+  // }, []);
 
   return (
     <BrowserRouter>
@@ -71,9 +71,9 @@ const MainRoutes = () => {
           <Route
             path="dashboard"
             element={
-              <ProtectedRoute user={user}>
-                <Dash user={user} />
-              </ProtectedRoute>
+              // <ProtectedRoute user={user}>
+              <Dash user={user} />
+              // {/* </ProtectedRoute> */}
             }
           />
           <Route

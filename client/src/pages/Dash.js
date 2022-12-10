@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback, useEffect } from "react";
 import "../assets/Styles/index.css";
 import {
   faArrowRight,
@@ -8,19 +8,24 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NavLink, useNavigate } from "react-router-dom";
+import { useUser } from "../context/auth";
 
-function Dash({ user }) {
+
+function Dash() {
   const navigate = useNavigate();
+  const { user } = useUser();
+
   const avatars = [
     "https://t3.ftcdn.net/jpg/04/91/73/76/360_F_491737640_tzzQnoHBICFQmY5ZdBOicUHzQEyW0CDo.jpg",
     "https://img.favpng.com/4/6/8/corn-on-the-cob-maize-sweet-corn-cartoon-png-favpng-QaEd3CLgQhWnVzmV5LRKsn11b.jpg",
     "https://www.citypng.com/public/uploads/preview/cartoon-potato-character-holding-a-fries-cup-11646751276cbft8zfryd.png",
     "https://www.kindpng.com/picc/m/36-361215_object-redundancy-chicken-leg-clipart-png-download-animated.png",
   ];
+
   return (
     <div className="dash">
       <div className="grid one">
-        <div class="one-content">
+        <div className="one-content">
           <h1>Hello {user?.username}!</h1>
           <p>Let's cook :</p>
         </div>
