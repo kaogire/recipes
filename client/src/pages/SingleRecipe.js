@@ -43,7 +43,7 @@ const SingleRecipe = () => {
   const navigate = useNavigate();
 
   const loadRecipe = useCallback(async (rid) => {
-    const res = await axios.get(`/recipes/${rid}`);
+    const res = await axios.get(`https://recipes-fed.onrender.com/recipes/${rid}`);
 
     setRecipe(res.data);
   }, []);
@@ -89,7 +89,7 @@ const SingleRecipe = () => {
 
   const handleDelete = async (id) => {
     if (window.confirm(`Are you sure want to delete "${inputs.foodname}"`)) {
-      axios.delete(`${"/recipes"}/${id}`);
+      axios.delete(`${"https://recipes-fed.onrender.com/recipes"}/${id}`);
       toast.success("Deleted Successfully");
       navigate("/recipes");
     } else {
@@ -98,7 +98,7 @@ const SingleRecipe = () => {
   };
 
   const handleRecipeUpdate = () => {
-    axios.put(`/recipes/${recipe.id}`, inputs);
+    axios.put(`https://recipes-fed.onrender.com/recipes/${recipe.id}`, inputs);
     toast.success("Updated Successfully");
     navigate("/recipes");
   };

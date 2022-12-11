@@ -10,7 +10,7 @@ const useProvideUser = () => {
   const [user, setUser] = React.useState(null);
 
   const reload = useCallback(() => {
-    axios.get("/me").then((response) => {
+    axios.get("https://recipes-fed.onrender.com/me").then((response) => {
       setUser(response.data);
     })
     .catch((error) => {console.log(error)});
@@ -25,7 +25,7 @@ const useProvideUser = () => {
   };
 
   const handleRegLogout = () => {
-    fetch("/logout", { method: "DELETE" }).then((r) => {
+    fetch("https://recipes-fed.onrender.com/logout", { method: "DELETE" }).then((r) => {
       if (r.ok) {
         toast.success("Logout Successful");
       }
