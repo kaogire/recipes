@@ -1,4 +1,4 @@
-#recipe
+#recipe app
 ---
 Live links
 Click [here]() to view live site. 
@@ -36,12 +36,9 @@ Fork/Clone this repository to your local machine.(https://github.com/benardcheru
 ##Technologies Used
 * HTML
 * CSS
-* JavaScript
-* React
-* Ruby on Rails(API)
+* React js
+* Ruby on Rails
 * SQLite3
-* Heroku
-* Postman
 
 ---
 
