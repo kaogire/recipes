@@ -19,7 +19,7 @@ function EditProfile() {
   function handleSubmit(e) {
     e.preventDefault();
     
-    fetch("https://recipes-fed.onrender.com/users", {
+    fetch("https://recipes-be.onrender.com/users", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

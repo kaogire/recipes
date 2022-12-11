@@ -26,7 +26,7 @@ const Signup = ({ handleClose, show, handleLoginShow }) => {
       onSubmit: (values, actions) => {
         actions.resetForm();
 
-        fetch("https://recipes-fed.onrender.com/users", {
+        fetch("https://recipes-be.onrender.com/users", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
