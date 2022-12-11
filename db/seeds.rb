@@ -34,7 +34,5 @@ end
 user2 = User.create(firstname: "Jane", lastname: "Doe", username: "janedoe", email: "janedoe@gmail.com" , password_digest: "")
 user1 = User.create(firstname: "John", lastname: "Doe", username: "johndoe", email: "johndoe@gmail.com" , password_digest: "")
 
-comment1 = Comment.create(content: "This is a comment", user_id: user1.id, recipe_id: Recipe.first.id, image_url: "")
-comment2 = Comment.create(content: "This is another comment", user_id: user2.id, recipe_id: Recipe.first.id, image_url: "")
 
 puts "✅ Done seeding!"
