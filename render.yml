@@ -1,0 +1,33 @@
+services:
+  # Ruby BE
+  - type: web
+    name: recipes-be
+    env: ruby
+    repo: https://github.com/kaogire/recipes.git
+    plan: free
+    scaling: 
+      minInstances: 1
+      maxInstances: 3
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "bundle exec rails s"
+
+  - type: web
+    name: recipes-fe
+    env: static
+    plan: free
+    rootDir: client
+    buildCommand: yarn build
+    staticPublishPath: ./client/build
+    headers: 
+      - path: /*
+        name: X-Frame-Options
+        value: sameOrigin
+    routes: 
+      - type: rewrite
+        source: /*
+        destination: index.html
+
+databases:
+  - name: recipes
+    databaseName: recipes
+    user: recipes
